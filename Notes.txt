@@ -1,0 +1,27 @@
+GNU C Reference Manual, Sec. 2.5-2.6, 5.7
+GNU C Library, Sec. 5, 25
+
+Error check: # of elements to store in Table is > 0.
+
+To do: Check how to properly display the ERROR: Usage... message as in the sample run using C's EXIT_FAILURE.
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+In general, an array of pointers can be used to point to an array of data items with each element of the pointer array pointing to an element of the data array. Data items can be accessed either directly in the data array, or indirectly by dereferencing the elements of the pointer array. The advantage of a pointer array is that the pointers can be reordered in any manner without moving the data items.
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+The sizeof operator can be used to automatically compute the number of elements in an array:
+
+#include <stddef.h>
+#include <stdio.h>     
+static const int values[] = { 1, 2, 48, 681 };
+#define ARRAYSIZE(x) (sizeof x/sizeof x[0])     
+int main (int argc, char *argv[])
+{
+	size_t i;        for (i = 0; i < ARRAYSIZE(values); i++)        {
+		printf("%d\n", values[i]);        }	return 0; 
+}

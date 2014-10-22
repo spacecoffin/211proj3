@@ -7,10 +7,42 @@ To do: Check how to properly display the ERROR: Usage... message as in the sampl
 
 
 
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+Binary search is used to quickly find a value in a sorted sequence
+
+target value - sought value.
+search space - contiguous subsequence of the starting sequence where the target value is surely located.
+
+0: The search space is initially the entire sequence. 
+1: At each step, the algorithm compares the median value in the search space to the target value. 
+2: Based on the comparison and because the sequence is sorted, it can then eliminate half of the search space. 
+3: By doing this repeatedly, it will eventually be left with a search space consisting of a single element, the target value.
+
+if (binary_search) {
+	if (strcmp(*word) 
+
+
+lo = 1, hi = sizeof(A);
+while (lo <= hi) {
+	mid = lo + (hi-lo)/2;
+	if (A[mid] == target) {
+		return mid;
+	} else if (A[mid] < target) {
+		lo = mid+1;
+	} else if (A[mid] > target) {
+		hi = mid-1;
+	} else {
+		return 0;	// target not found
+	}
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 
 In general, an array of pointers can be used to point to an array of data items with each element of the pointer array pointing to an element of the data array. Data items can be accessed either directly in the data array, or indirectly by dereferencing the elements of the pointer array. The advantage of a pointer array is that the pointers can be reordered in any manner without moving the data items.
-
 
 ////////////////////////////////////////////////////////////////////////////////
 

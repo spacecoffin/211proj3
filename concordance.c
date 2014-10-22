@@ -21,7 +21,7 @@
 
 int main(int argc, const char *argv[])
 {
-	constant char delimiters[] = " .,;:!\"?\n";
+	const char delimiters[] = " .,;:!\"?\n";
 
 	if ((argc < 2) || (argc > 3)) {
 		printf("Usage: concordance table_size\n");
@@ -37,8 +37,11 @@ int main(int argc, const char *argv[])
 
 	char *line = NULL;
 	size_t length = 0;
+	ssize_t read;
 
-	getline(&line, &length, stdin);
+	while ((read = getline(&line, &length, stdin)) != -1) {
+		printf("%s", line);
+	}
 	free(line);
 
 	/*

@@ -9,12 +9,59 @@
 #include <stdio.h>
 #include <stdlib.h>	// for atoi()
 #include <stddef.h>	// for sizeof()
+#include <string.h>	// for strtok(), strcmp, etc.
 #define STRMAX 29	// used for maximum size for a word string. 28 is length
 			// of longest non-coined non-technical English word.
 #define DEBUG 1
 
 /* Function prototypes */
 //int insert(char*, char*, int);
+//void print(char *, int);
+//void empty(char *, int);
+
+int main(int argc, const char *argv[])
+{
+	if ((argc < 2) || (argc > 3)) {
+		printf("Usage: concordance table_size\n");
+		return 1;
+	}
+	
+	int table_size = atoi(argv[1]);	// Set table_size equal to value of 
+					// first command-line arg, converting 
+					// the string to int.
+	
+	char Table[table_size];		// The word table should be implemented
+					// as an array of pointers to strings.
+
+	char word[STRMAX];
+	char *word_ptr;
+
+	word_ptr = strtok(word, " .,;:!\"?\n");
+
+	while (word_ptr != NULL) {
+		printf("%s\n", word_ptr);
+		//insert()
+		word_ptr = strtok(NULL, " .,;:!\"?\n");
+	}
+
+	/*
+	int temp = getchar();
+	
+	while (temp != EOF) {
+		if temp
+		temp = getchar();
+		printf("%c", temp);
+	}
+	
+	//#if DEBUG
+	//printf("%c", temp);
+	//#endif
+	
+	//insert();
+	*/
+	
+	return 0;
+}
 
 void print(char *Table[], int n)
 {
@@ -27,32 +74,6 @@ void empty(char *Table[], int n)
 	 * emptys Table by freeing all the strings currently stored in it and
 	 * setting the string pointers back to NULL.
 	 */
-}
-
-int main(int argc, const char *argv[])
-{
-	if ((argc < 2) || (argc > 3)) {
-		printf("Usage: concordance table_size");
-		//exit pgm
-	}
-	
-	//int table_size = atoi(argv[1]);	// Set table_size equal to value of
-					// first command-line argument,
-					// converting the string input to int.
-	
-	//char *Table[table_size];	// The word table should be implemented
-					// as an array of pointers to strings.
-	//char *word[
-	
-	int temp = getchar();
-	
-	#if DEBUG
-	printf("%c", temp);
-	#endif
-	
-	//insert();
-	
-	return 0;
 }
 
 int insert(char *word, char *Table[], int n)

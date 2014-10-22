@@ -38,9 +38,27 @@ int main(int argc, const char *argv[])
 	char *line = NULL;
 	size_t length = 0;
 	ssize_t read;
+	char word[STRMAX];
+	char *word_ptr;
+
+	int i = 0;
+
+	
 
 	while ((read = getline(&line, &length, stdin)) != -1) {
-		printf("%s", line);
+
+		i++;
+		printf("%i. %s", i, line);
+
+		word_ptr = strtok(line, delimiters);
+
+		
+
+		while (word_ptr != NULL) {
+			printf("%s\n", word_ptr);
+			//insert()
+			word_ptr = strtok(NULL, delimiters);
+		}
 	}
 	free(line);
 

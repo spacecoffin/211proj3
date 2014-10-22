@@ -21,6 +21,8 @@
 
 int main(int argc, const char *argv[])
 {
+	constant char delimiters[] = " .,;:!\"?\n";
+
 	if ((argc < 2) || (argc > 3)) {
 		printf("Usage: concordance table_size\n");
 		return 1;
@@ -33,29 +35,23 @@ int main(int argc, const char *argv[])
 	char Table[table_size];		// The word table should be implemented
 					// as an array of pointers to strings.
 
+	char *line = NULL;
+	size_t length = 0;
+
+	getline(&line, &length, stdin);
+	free(line);
+
+	/*
 	char word[STRMAX];
 	char *word_ptr;
 
-	word_ptr = strtok(word, " .,;:!\"?\n");
+	word_ptr = strtok(word, delimiters);
 
 	while (word_ptr != NULL) {
 		printf("%s\n", word_ptr);
 		//insert()
-		word_ptr = strtok(NULL, " .,;:!\"?\n");
+		word_ptr = strtok(NULL, delimiters);
 	}
-
-	/*
-	int temp = getchar();
-	
-	while (temp != EOF) {
-		if temp
-		temp = getchar();
-		printf("%c", temp);
-	}
-	
-	//#if DEBUG
-	//printf("%c", temp);
-	//#endif
 	
 	//insert();
 	*/
